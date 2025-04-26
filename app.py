@@ -450,33 +450,25 @@ def main():
 
         final_state = None
         try:
-            # Stream the execution steps
-            # stream_mode="values" returns the full state object after each node completes
             with st.spinner("Pipeline running..."):
-                 # Iterate through the state updates provided by the stream
                  for current_state in app.stream(initial_state, stream_mode="values"):
-                     # current_state IS the full state dictionary yielded by stream_mode="values"
 
-                     # Update the progress display dynamically
                      with progress_expander:
-                         # Cannot easily determine which node just ran from "values" mode directly.
-                         # Just show the state after a step.
-                         st.write(f"**State Update:**")
-                         st.json(current_state, expanded=False) # Show the updated state
-                         st.markdown("---") # Separator
 
-                     final_state = current_state # Always keep track of the latest state
+                         st.write(f"**State Update:**")
+                         st.json(current_state, expanded=False) 
+                         st.markdown("---")
+
+                     final_state = current_state 
 
             st.success("Pipeline finished!")
 
         except Exception as e:
             st.error(f"An error occurred during pipeline execution: {e}")
-            st.code(traceback.format_exc()) # Show detailed error in Streamlit
+            st.code(traceback.format_exc())
             st.warning("Pipeline execution halted due to error.")
-            # final_state should hold the state just before the error if stream was progressing
 
 
-        # --- Display Final Results ---
         with final_result_container:
             st.subheader("🏁 Final Results")
             if final_state:
@@ -484,19 +476,18 @@ def main():
                 st.write("**Final Plan:**")
                 final_plan = final_state.get('plan')
                 if final_plan:
-                    st.markdown(format_plan(final_plan)) # Use helper function to display final plan
+                    st.markdown(format_plan(final_plan))
                 else:
                     st.write("No final plan available.")
 
                 st.write("**Executed Tasks:**")
                 final_executed = final_state.get('executed_tasks')
-                st.markdown(format_executed_tasks(final_executed)) # Use helper function
+                st.markdown(format_executed_tasks(final_executed))
             else:
                 st.warning("Pipeline did not produce a final state or encountered an error early.")
 
     else:
         st.info("Enter your query and click 'Run Pipeline' to start the agent.")
 
-# --- Run the Streamlit app ---
 if __name__ == "__main__":
     main()
