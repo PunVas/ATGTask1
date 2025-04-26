@@ -1,0 +1,6 @@
+streamlit
+langgraph
+google-generativeai
+python-dotenv # Good practice for local development, optional for HF Spaces Secrets
+langchain # langgraph might have dependencies requiring this
+langchain_core # langgraph might have dependencies requiring this
