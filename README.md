@@ -22,8 +22,8 @@ This project demonstrates a simple autonomous agentic workflow built using LangG
 
 1.  **Clone the repository:**
     ```bash
-    git clone <repository_url> # Replace <repository_url> with the actual URL
-    cd <repository_directory> # Replace with the cloned directory name
+    git clone https://github.com/PunVas/ATGTask1.git
+    cd <repo_dir>
     ```
 
 2.  **Create a virtual environment (recommended):**
