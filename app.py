@@ -467,7 +467,7 @@ def main():
 
 
         with final_result_container:
-            st.subheader("🏁 Final Results")
+            st.subheader("Final Results")
             if final_state:
                 st.write("**Original Query:**", final_state.get('input_query'))
                 st.write("**Final Plan:**")
