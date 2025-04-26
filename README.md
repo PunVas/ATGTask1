@@ -90,15 +90,7 @@ The application uses LangGraph to orchestrate the following state machine:
 
 This loop continues until the reflection indicates the task is "DONE" or the maximum number of reflection cycles is reached. Streamlit provides the interactive front-end to input the query and display the pipeline's progress and final output.
 
-## Contributing
-
-Feel free to fork the repository and contribute!
-
-## License
-
-This project is licensed under the MIT License - see the `LICENSE` file (create this file separately if you wish to include one) for details.
-
-## Attribution
+## Major tools used
 
 * Built with [LangChain/LangGraph](https://github.com/langchain-ai/langgraph)
 * Powered by [Google Gemini API](https://ai.google.dev/models/gemini)
